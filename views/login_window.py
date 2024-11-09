@@ -1,9 +1,10 @@
-import sys  # Importa el módulo sys para operaciones del sistema
+import sys
 from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6.QtCore import Slot
 from views.qt.qt_login_equipo_1 import Ui_Login_Equipo_1
 from views.registro_window import VentanaRegistro
 from controllers.usuario_controller import UsuarioController
+from PySide6.QtWidgets import QWidget
 
 
 class VentanaLogin(QMainWindow):
@@ -23,6 +24,7 @@ class VentanaLogin(QMainWindow):
             self.ui.button_login_2.clicked.connect(self.iniciar_sesion)
             self.ventana_registro = None
             self.gestor_usuarios = UsuarioController()
+            self.ventana_busqueda = None  # Inicializamos la ventana de búsqueda como None
         except Exception as e:
             print(f"Error al inicializar la ventana de login: {e}")
 
@@ -32,17 +34,16 @@ class VentanaLogin(QMainWindow):
         Método que se ejecuta al hacer clic en 'Crear Cuenta'.
         """
         try:
-            #Ocultamos la ventana de login
+            # Ocultamos la ventana de login
             self.hide()
-            #Si no existe la ventana de registro, la creamos mediante una instancia padre
+            # Si no existe la ventana de registro, la creamos mediante una instancia padre
             if self.ventana_registro is None:
                 self.ventana_registro = VentanaRegistro(parent=self)
-            #Mostrmoas la ventana de registro y controlamos cualquier error con la excepcion
+            # Mostramos la ventana de registro y controlamos cualquier error con la excepción
             self.ventana_registro.show()
         except Exception as e:
             print(f"Error al abrir la ventana de registro: {e}")
 
-    
     @Slot()
     def iniciar_sesion(self):
         """
@@ -58,9 +59,22 @@ class VentanaLogin(QMainWindow):
 
             if usuario is not None:
                 print(f"Bienvenido {usuario.nombre_usuario}")  # Muestra el mensaje de bienvenida
+                
+                # Importa VentanaBusqueda solo cuando sea necesario
+                from views.busqueda_window import VentanaBusqueda
+                
+                # Ocultamos la ventana de login
+                self.hide()
+
+                # Creamos la ventana de búsqueda si aún no ha sido creada
+                if self.ventana_busqueda is None:
+                    self.ventana_busqueda = VentanaBusqueda(parent=self)  # Aquí creamos la ventana de búsqueda correctamente
+
+                # Mostramos la ventana de búsqueda
+                self.ventana_busqueda.show()
+
             else:
                 print("Credenciales no válidas")  # Mensaje de error si las credenciales son incorrectas
         except Exception as e:
             print(f"Error al iniciar sesión: {e}")  # Captura y muestra cualquier error que ocurra
 
-    
