@@ -43,7 +43,7 @@ class Ui_ventana_busqueda(object):
         self.label.setObjectName(u"label")
         self.label.setMinimumSize(QSize(51, 41))
         self.label.setMaximumSize(QSize(51, 41))
-        self.label.setPixmap(QPixmap(u"../../../Downloads/search_icon.png"))
+        self.label.setPixmap(QPixmap(u"icons/search_icon.png"))
         self.label.setScaledContents(True)
 
         self.horizontalLayout_3.addWidget(self.label)
@@ -60,7 +60,7 @@ class Ui_ventana_busqueda(object):
         self.label_2.setObjectName(u"label_2")
         self.label_2.setMinimumSize(QSize(51, 41))
         self.label_2.setMaximumSize(QSize(51, 41))
-        self.label_2.setPixmap(QPixmap(u"../../../Downloads/trash_icon.png"))
+        self.label_2.setPixmap(QPixmap(u"icons/trash_icon.png"))
         self.label_2.setScaledContents(True)
 
         self.horizontalLayout_3.addWidget(self.label_2)
