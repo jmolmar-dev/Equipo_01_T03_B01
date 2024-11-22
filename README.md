@@ -1,1 +1,3 @@
-ÿş
+## Proyecto del Tema 3 realizado por el Equipo 01 para la Asignatura de Desarrollo de Interfaces 
+
+### RealizaciÃ³n/CreaciÃ³n de 3 componentes de PySide6 e implementaciÃ³n de los mismos en nuestro proyecto de curso
