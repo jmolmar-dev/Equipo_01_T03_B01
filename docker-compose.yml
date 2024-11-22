@@ -1,0 +1,25 @@
+version: '3.8'  # Especifica la versión de Docker Compose a usar
+
+services:
+  postgres:  # Define un servicio llamado 'postgres'
+    image: postgres:latest  # Utiliza la última imagen de PostgreSQL disponible
+    container_name: tr_02_PR2  # Asigna un nombre al contenedor, en este caso 'tr_02_PR2'
+    environment:  # Define las variables de entorno necesarias para la configuración de PostgreSQL
+      POSTGRES_USER: admin  # Nombre de usuario para la base de datos
+      POSTGRES_PASSWORD: "0000"  # Contraseña para el usuario de la base de datos
+      POSTGRES_DB: eq_01_gamevault_db  # Nombre de la base de datos que se creará al iniciar el contenedor
+      PGDATA: /var/lib/postgresql/data  # Ruta dentro del contenedor donde se almacenarán los datos de PostgreSQL
+    ports:
+      - "54320:5432"  # Expone el puerto 5432 del contenedor en el puerto 54320 de la máquina host para acceder a la base de datos desde el exterior
+    volumes:
+      - postgres-data:/var/lib/postgresql/data  # Asocia un volumen llamado 'postgres-data' a la carpeta de datos de PostgreSQL en el contenedor
+    networks:
+      - bridge  # Asigna el contenedor a una red llamada 'bridge'
+
+volumes:
+  postgres-data:
+    driver: local  # Define el volumen 'postgres-data' con el controlador local, que almacena los datos en el sistema de archivos de la máquina host
+
+networks:
+  bridge:
+    driver: bridge  # Define una red de tipo bridge para la comunicación de contenedores en esta red
