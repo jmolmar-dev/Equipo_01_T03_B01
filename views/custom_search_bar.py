@@ -34,7 +34,7 @@ class CustomSearchBar(QWidget):
         self.icono_busqueda.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.icono_busqueda.setFixedSize(QSize(30, 30))
         self.icono_busqueda.setStyleSheet("background-color: transparent;")
-        self.icono_busqueda.setCursor(QCursor(Qt.PointingHandCursor))
+        self.icono_busqueda.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
 
     def configuracion_campo_texto(self):
         """Configura el QLineEdit del campo de texto"""
@@ -58,7 +58,7 @@ class CustomSearchBar(QWidget):
         self.icono_papelera.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.icono_papelera.setFixedSize(QSize(30, 30))
         self.icono_papelera.setStyleSheet("background-color: transparent;")
-        self.icono_papelera.setCursor(QCursor(Qt.PointingHandCursor))
+        self.icono_papelera.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
 
     def configuracion_atajos(self):
         """Configuración de los atajos de teclado"""
